@@ -82,7 +82,16 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
         $scope.persona.descripcion_rol = "1";
     }
 
+    fsUser.TraerTodos('Rol')
+        .then(function (respuesta) {
+            $scope.itemsSelectRol = {};
+            $scope.itemsSelectRol = respuesta;
+        }, function (error) {
+            console.info(error);
+        });
+
     $scope.Guardar = function () {
+        $scope.persona.id_rol = $scope.objeSeleccionado.id_rol;
        if ($stateParams.param1 == null) {
             fsUser.InsertarObj('User', $scope.persona)
                 .then(function (respuesta) {
@@ -124,7 +133,6 @@ miApp.controller("controllerUserGrilla", function ($scope, $state, $http, fsUser
         }, function (error) {
             console.info(error);
         });
-
 
     function columnDefs() {
         return [

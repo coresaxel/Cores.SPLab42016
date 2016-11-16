@@ -2,6 +2,7 @@
 require_once('Clases/AccesoDatos.php');
 require_once('Clases/User.php');
 require_once('Clases/Producto.php');
+require_once('Clases/Rol.php');
 require 'vendor/autoload.php';
 
 
@@ -19,6 +20,11 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/User', function ($request, $response, $args) {
     return $response->write(json_encode(User::TraerTodasLasPersonas()));
 });
+
+$app->get('/Rol', function ($request, $response, $args) {
+    return $response->write(json_encode(Rol::TraerTodosLosRoles()));
+});
+
 
 $app->get('/User/{objeto}', function ($request, $response, $args) {
     return $response->write(json_encode(User::TraerUnaPersona($args['objeto'])));
