@@ -1,0 +1,52 @@
+<nav class="navbar navbar-light bg-faded">
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div id="signin" class="navbar-form navbar" ng-if="UserName">
+			<div id="header">
+				<ul class="nav">
+					<li>
+						<a><i class="glyphicon glyphicon-user"></i> {{UserName}} </a>
+					</li>
+					<li><a ui-sref="SP.Principal">Inicio</a></li>
+					<li><a>Usuarios</a>
+						<ul>
+							<li><a ui-sref="Abm.User">Alta</a></li>
+							<li><a ui-sref="Abm.UserGrilla">Grilla</a></li>
+						</ul>
+					</li>
+					<li><a>Productos</a>
+						<ul>
+							<li><a ui-sref="Abm.Producto">Alta</a></li>
+							<li><a ui-sref="Abm.ProductoGrilla">Grilla</a></li>
+						</ul>
+					</li>
+					<li><a ng-click="Logout()">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="butons" class="navbar-form navbar-nav" ng-if="!UserName">
+			<div class="input-group">
+				<button type="submit" ng-click="Test('Admin')" class="btn btn-primary">Administrador</button>
+				<button type="submit" ng-click="Test('Comprador')" class="btn btn-primary">Comprador</button>
+				<button type="submit" ng-click="Test('Vendedor')" class="btn btn-primary">Vendedor</button>
+			</div>
+		</div>
+
+		<form id="FormIngreso" name="FormIngreso">
+			<div id="login" class="navbar-form navbar-nav-right" ng-if="!UserName">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="nombre" name="nombre" type="text" class="form-control" required ng-model="FormIngreso.nombre" placeholder="nombre">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="mail" name="mail" type="mail" class="form-control" required ng-model="FormIngreso.mail"  placeholder="Mail">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" name="password" type="password" class="form-control" required ng-model="FormIngreso.pass" placeholder="Password">
+				</div>
+				<button type="submit" ng-click="Login()" ng-disabled="FormIngreso.$invalid" class="btn btn-primary">Login</button>
+		</form>
+		</div>
+	</div>
+</nav>
