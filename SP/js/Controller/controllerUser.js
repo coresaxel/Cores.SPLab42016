@@ -86,7 +86,6 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
        if ($stateParams.param1 == null) {
             fsUser.InsertarObj('User', $scope.persona)
                 .then(function (respuesta) {
-                    console.info(respuesta)
                     $state.go("Abm.UserGrilla");
 
                 }, function (error) {
@@ -121,7 +120,7 @@ miApp.controller("controllerUserGrilla", function ($scope, $state, $http, fsUser
     fsUser.TraerTodos('User')
         .then(function (respuesta) {
             $scope.gridOptions.data = respuesta;
-
+            $scope.ListadoPersonas = respuesta;
         }, function (error) {
             console.info(error);
         });
@@ -147,6 +146,7 @@ miApp.controller("controllerUserGrilla", function ($scope, $state, $http, fsUser
                 fsUser.TraerTodos('User')
                     .then(function (respuesta) {
                         $scope.gridOptions.data = respuesta;
+                        $scope.ListadoProductos = respuesta;
 
                     }, function (error) {
                         console.info(error);

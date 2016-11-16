@@ -74,7 +74,7 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 				},
 				"contenidoBody":
 				{
-					templateUrl: "./Templates/Grilla/Grilla.html",
+					templateUrl: "./Templates/Grilla/Usuarios.html",
 					controller: "controllerUserGrilla"
 				}
 			}
@@ -110,7 +110,7 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 				},
 				"contenidoBody":
 				{
-					templateUrl: "./Templates/Grilla/Grilla.html",
+					templateUrl: "./Templates/Grilla/Productos.html",
 					controller: "controllerProductos"
 				}
 			}

@@ -45,6 +45,7 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
     fsUser.TraerTodos('Producto')
         .then(function (respuesta) {
             $scope.gridOptions.data = respuesta;
+            $scope.ListadoProductos = respuesta;
 
         }, function (error) {
             console.info(error);
@@ -65,6 +66,7 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
                 fsUser.TraerTodos('Producto')
                     .then(function (respuesta) {
                         $scope.gridOptions.data = respuesta;
+                        $scope.ListadoProductos = respuesta;
 
                     }, function (error) {
                         console.info(error);

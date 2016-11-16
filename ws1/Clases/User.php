@@ -62,7 +62,7 @@ class User
 	public static function InsertarPersona($persona)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("insert into usuario (nombre_usuario, mail_usuario, pass_usuario, id_rol) VALUES (:nombre_usuario,:mail_usuario,:id_rol,:pass_usuario)");
+		$consulta =$objetoAccesoDato->RetornarConsulta("insert into usuario (nombre_usuario, mail_usuario, pass_usuario, id_rol) VALUES (:nombre_usuario,:mail_usuario,:pass_usuario,:id_rol)");
 		$consulta->bindValue(':nombre_usuario',$persona->nombre, PDO::PARAM_STR);
 		$consulta->bindValue(':mail_usuario', $persona->mail, PDO::PARAM_STR);
 		$consulta->bindValue(':id_rol', $persona->id_rol, PDO::PARAM_INT);
