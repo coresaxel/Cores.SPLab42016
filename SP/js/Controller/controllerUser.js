@@ -18,8 +18,8 @@ miApp.controller("controllerLogin", function ($scope, $state, $auth, fsUser) {
                 $scope.FormIngreso.pass = "1234";
                 break;
             case 'Vendedor':
-                $scope.FormIngreso.mail = "V@V";
-                $scope.FormIngreso.nombre = "PepeArgento";
+                $scope.FormIngreso.mail = "ax@ax";
+                $scope.FormIngreso.nombre = "AxelVendedor";
                 $scope.FormIngreso.pass = "1234";
                 break;
 
@@ -63,6 +63,7 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
         $state.go('SP.Principal');
 
     $scope.Rol = fsUser.ObtenerRol();
+    console.info($stateParams.param1)
 
     $scope.SubirdorArchivos = new FileUploader({ url: Url + 'archivos' });
     if ($stateParams.param1 == null) {
@@ -78,12 +79,12 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
         $scope.Accion = "Modificar Usuario"
         //inicio las variables
         $scope.persona = {};
-        $scope.persona.nombre = $stateParams.param1.nombre;
-        $scope.persona.mail = $stateParams.param1.mail;
+        $scope.persona.nombre = $stateParams.param1.nombre_usuario;
+        $scope.persona.mail = $stateParams.param1.mail_usuario;
         $scope.persona.pass_usuario = $stateParams.param1.pass_usuario;
         $scope.persona.id_usuario = $stateParams.param1.id_usuario;
-        $scope.persona.id_rol = 1;
-        $scope.persona.descripcion_rol = "1";
+        $scope.persona.id_rol = $stateParams.param1.id_rol;
+        $scope.persona.descripcion_rol = $stateParams.param1.descripcion_rol;
     }
 
     fsUser.TraerTodos('Rol')
@@ -158,7 +159,8 @@ miApp.controller("controllerUserGrilla", function ($scope, $state, $http, fsUser
                 fsUser.TraerTodos('User')
                     .then(function (respuesta) {
                         $scope.gridOptions.data = respuesta;
-                        $scope.ListadoProductos = respuesta;
+                        $scope.ListadoPersonas = respuesta; 
+                        $state.reload();
 
                     }, function (error) {
                         console.info(error);
@@ -172,6 +174,7 @@ miApp.controller("controllerUserGrilla", function ($scope, $state, $http, fsUser
 
 
     $scope.Modificar = function (id) {
+        console.info(id)
         fsUser.TraerUnObj('User', id)
             .then(function (respuesta) {
                 $state.go("Abm.User", { 'param1': respuesta });

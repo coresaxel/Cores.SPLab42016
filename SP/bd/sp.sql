@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2016 a las 03:50:59
+-- Tiempo de generación: 17-11-2016 a las 20:22:53
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -33,6 +33,14 @@ CREATE TABLE `producto` (
   `foto_Producto` varchar(2000) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_Producto`, `descripcion_Producto`, `precio_Producto`, `foto_Producto`) VALUES
+(4, 'Producto X', 2, ''),
+(5, 'Producto XX', 2, '');
+
 -- --------------------------------------------------------
 
 --
@@ -50,7 +58,7 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`id_rol`, `descripcion_rol`) VALUES
 (1, 'ADMINISTRADOR'),
-(2, 'EMPLEADO'),
+(2, 'VENDEDOR'),
 (3, 'CLIENTE');
 
 -- --------------------------------------------------------
@@ -72,7 +80,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `mail_usuario`, `pass_usuario`, `id_rol`) VALUES
-(1, 'AXELCORES', '', 'A1', 1);
+(1, 'AXELCORES', 'a@a', 'A1', 1),
+(5, 'Axel', 'ax@ax', '1234', 1),
+(6, 'AxelVendedor', 'ax@ax', '1234', 2),
+(7, 'AxelComprador', 'ax@ax', '1234', 3);
 
 --
 -- Índices para tablas volcadas
@@ -104,7 +115,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
@@ -114,7 +125,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

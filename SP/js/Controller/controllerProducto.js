@@ -38,7 +38,6 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
         $state.go('SP.Principal');
 
     $scope.Rol = fsUser.ObtenerRol();
-    console.info($scope.Rol)
     $scope.titulo = "Productos";
     $scope.gridOptions = {};
     $scope.gridOptions.paginationPageSizes = [25, 50, 75];
@@ -65,13 +64,14 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
     }
 
     $scope.Borrar = function (id) {
+        
         fsUser.EliminarObj('Producto', id)
             .then(function (respuesta) {
                 fsUser.TraerTodos('Producto')
                     .then(function (respuesta) {
                         $scope.gridOptions.data = respuesta;
                         $scope.ListadoProductos = respuesta;
-
+                        $state.reload();
                     }, function (error) {
                         console.info(error);
                     });
@@ -81,17 +81,4 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
             });
 
     }
-
-
-    $scope.Modificar = function (id) {
-        fsUser.TraerUnObj('Producto', id)
-            .then(function (respuesta) {
-
-                $state.go("Abm.Producto", { 'param1': respuesta });
-
-            }, function (error) {
-                console.info(error);
-            });
-    };
-
 });

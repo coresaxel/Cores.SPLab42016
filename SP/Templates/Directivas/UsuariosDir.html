@@ -14,14 +14,14 @@
 
         <td>{{persona.nombre_usuario}}</td>
         <td>{{persona.mail_usuario}}</td>
-        <td>{{persona.descripcion_rol}}</td>persona.id_usuario
+        <td>{{persona.descripcion_rol}}</td>
         <td>
-            <button class='btn btn-danger' name='Borrar' ng-click="clickBorrar()">   
+            <button class='btn btn-danger' name='Borrar' ng-click="Borrar(persona.id_usuario)">   
             <span class='glyphicon glyphicon-remove-circle'>&nbsp;</span>Borrar</button>
         </td>
 
         <td>
-            <button class='btn btn-warning' name='Modificar' ng-click="modificar(persona)">
+            <button class='btn btn-warning' name='Modificar' ng-click="Modificar(persona.id_usuario)">
             <span class='glyphicon glyphicon-edit'>&nbsp;</span>Modificar</button>
         </td>
 

@@ -11,8 +11,8 @@
 			<input type="text" name="nombre" ng-model="persona.nombre" placeholder="Ingrese Nombre" required/>
 			<span id="lblNombre" style="display:none;color:#FF0000;width:1%;float:right;font-size:80">*</span>
 			<input type="password" ng-model="persona.pass_usuario" name="clave1" placeholder="Ingrese su Password" required />
-			<select ng-model="objeSeleccionado" ng-options="user as user.descripcion_rol for user in itemsSelectRol track by user.id_rol">
-				<option value="">* Elegir Un Rol *</option>
+			<select ng-model="objeSeleccionado" ng-options="user as user.descripcion_rol for user in itemsSelectRol track by user.id_rol" required>
+				
 			</select>
 			<p>
 				<!--<input type="hidden" name="idOculto" id="id" value="" />
