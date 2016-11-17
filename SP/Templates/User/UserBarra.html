@@ -4,10 +4,10 @@
 			<div id="header">
 				<ul class="nav">
 					<li>
-						<a><i class="glyphicon glyphicon-user"></i> {{UserName}} </a>
+						<a><i class="glyphicon glyphicon-user"></i> {{UserName}}</a>
 					</li>
 					<li><a ui-sref="SP.Principal">Inicio</a></li>
-					<li><a>Usuarios</a>
+					<li ng-show="Rol == 'ADMINISTRADOR'"><a>Usuarios</a>
 						<ul>
 							<li><a ui-sref="Abm.User">Alta</a></li>
 							<li><a ui-sref="Abm.UserGrilla">Grilla</a></li>
@@ -15,7 +15,7 @@
 					</li>
 					<li><a>Productos</a>
 						<ul>
-							<li><a ui-sref="Abm.Producto">Alta</a></li>
+							<li ng-show="Rol == 'VENDEDOR' || Rol == 'ADMINISTRADOR'"><a ui-sref="Abm.Producto">Alta</a></li>
 							<li><a ui-sref="Abm.ProductoGrilla">Grilla</a></li>
 						</ul>
 					</li>

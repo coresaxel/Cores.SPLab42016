@@ -14,11 +14,11 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 			url: "/SP",
 			abstract: true,
 			templateUrl: "./Templates/Abstractas/pep.html",
-			cache: true
+			cache: false
 		})
 		.state(
 		"SP.Principal", {
-			cache: true,
+			cache: false,
 			url: "/",
 			views:
 			{
@@ -38,11 +38,11 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 			url: "/Abm",
 			abstract: true,
 			templateUrl: "./Templates/Abstractas/pep.html",
-			cache: true
+			cache: false
 		})
 		.state(
 		"Abm.User", {
-			cache: true,
+			cache: false,
 			url: "/User",
 			params: {
 				param1: null
@@ -63,7 +63,7 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		})
 		.state(
 		"Abm.UserGrilla", {
-			cache: true,
+			cache: false,
 			url: "/Usuarios",
 			views:
 			{
@@ -81,7 +81,7 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		})
 		.state(
 		"Abm.Producto", {
-			cache: true,
+			cache: false,
 			url: "/Producto",
 			views:
 			{
@@ -99,7 +99,7 @@ miApp.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		})
 		.state(
 		"Abm.ProductoGrilla", {
-			cache: true,
+			cache: false,
 			url: "/Productos",
 			views:
 			{

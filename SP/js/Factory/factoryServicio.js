@@ -1,4 +1,4 @@
-miApp.factory('fsUser', function (sUser,$auth) {
+miApp.factory('fsUser', function (sUser, $auth) {
 
   var objeto = {};
   objeto.nombre = "Factory de Banderas";
@@ -10,11 +10,16 @@ miApp.factory('fsUser', function (sUser,$auth) {
   objeto.EliminarObj = EliminarObj;
   objeto.TraerTodosObjeto = TraerTodosObjeto;
   objeto.VerificarLogin = VerificarLogin;
+  objeto.ObtenerRol = ObtenerRol;
 
   return objeto;
 
-  function VerificarLogin(){
+  function VerificarLogin() {
     return $auth.isAuthenticated();
+  }
+
+  function ObtenerRol() {
+    return ($auth.getPayload()).usuario[0].descripcion_rol;
   }
 
   function TraerTodosObjeto(obj) {

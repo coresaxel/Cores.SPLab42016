@@ -2,6 +2,8 @@ miApp.controller("controllerProducto", function ($scope, $state, $stateParams, F
     if (!fsUser.VerificarLogin())
         $state.go('SP.Principal');
 
+    $scope.Rol = fsUser.ObtenerRol();
+
     $scope.SubirdorArchivos = new FileUploader({ url: Url + 'archivos' });
     if ($stateParams.param1 == null) {
         $scope.Accion = "Nuevo Producto"
@@ -17,17 +19,17 @@ miApp.controller("controllerProducto", function ($scope, $state, $stateParams, F
         $scope.Producto.precio_Producto = $stateParams.param1.precio_Producto;
         $scope.Producto.id_Producto = $stateParams.param1.id_Producto;
     }
-    
-    $scope.Guardar = function () {
-        
-            fsUser.InsertarObj('Producto', $scope.Producto)
-                .then(function (respuesta) {
-                    $state.go("Abm.ProductoGrilla");
 
-                }, function (error) {
-                    console.info(error);
-                });
-        
+    $scope.Guardar = function () {
+
+        fsUser.InsertarObj('Producto', $scope.Producto)
+            .then(function (respuesta) {
+                $state.go("Abm.ProductoGrilla");
+
+            }, function (error) {
+                console.info(error);
+            });
+
     }
 });
 
@@ -35,6 +37,8 @@ miApp.controller("controllerProductos", function ($scope, $state, $http, fsUser)
     if (!fsUser.VerificarLogin())
         $state.go('SP.Principal');
 
+    $scope.Rol = fsUser.ObtenerRol();
+    console.info($scope.Rol)
     $scope.titulo = "Productos";
     $scope.gridOptions = {};
     $scope.gridOptions.paginationPageSizes = [25, 50, 75];

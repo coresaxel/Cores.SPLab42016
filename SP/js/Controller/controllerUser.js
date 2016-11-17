@@ -1,6 +1,7 @@
 miApp.controller("controllerLogin", function ($scope, $state, $auth, fsUser) {
     if ($auth.isAuthenticated()) {
         $scope.UserName = ($auth.getPayload()).usuario[0].nombre_usuario;
+        $scope.Rol = fsUser.ObtenerRol();
     }
 
     $scope.Test = function (rol) {
@@ -12,8 +13,8 @@ miApp.controller("controllerLogin", function ($scope, $state, $auth, fsUser) {
 
                 break;
             case 'Comprador':
-                $scope.FormIngreso.mail = "C@C";
-                $scope.FormIngreso.nombre = "Comprador";
+                $scope.FormIngreso.mail = "ax@ax";
+                $scope.FormIngreso.nombre = "AxelComprador";
                 $scope.FormIngreso.pass = "1234";
                 break;
             case 'Vendedor':
@@ -36,7 +37,8 @@ miApp.controller("controllerLogin", function ($scope, $state, $auth, fsUser) {
             .then(function (response) {
                 if ($auth.isAuthenticated()) {
                     $scope.FormIngreso.UserName = $scope.FormIngreso.nombre;
-                    $state.reload()
+                    $state.reload();
+                    $scope.Rol = ($auth.getPayload()).usuario[0].descripcion_rol;
                 }
             })
             .catch(function (response) {
@@ -59,6 +61,8 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
 
     if (!fsUser.VerificarLogin())
         $state.go('SP.Principal');
+
+    $scope.Rol = fsUser.ObtenerRol();
 
     $scope.SubirdorArchivos = new FileUploader({ url: Url + 'archivos' });
     if ($stateParams.param1 == null) {
@@ -92,7 +96,7 @@ miApp.controller("controllerUser", function ($scope, $state, $stateParams, FileU
 
     $scope.Guardar = function () {
         $scope.persona.id_rol = $scope.objeSeleccionado.id_rol;
-       if ($stateParams.param1 == null) {
+        if ($stateParams.param1 == null) {
             fsUser.InsertarObj('User', $scope.persona)
                 .then(function (respuesta) {
                     $state.go("Abm.UserGrilla");
